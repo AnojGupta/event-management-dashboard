@@ -63,7 +63,7 @@ function EventManagement() {
   const handleDelete = async (id) => {
     if (window.confirm('Are you sure you want to delete this event?')) {
       try {
-        await axios.delete(`http://localhost:5000/api/events/${id}`);
+        await axios.delete(`http://localhost:5001/api/events/${id}`);
         getEvents()  // Refresh event list after deletion
           .then(response => setEvents(response.data));
       } catch (error) {

@@ -34,7 +34,7 @@ function TaskTracker() {
 
   const fetchEvents = async () => {
     try {
-      const res = await axios.get('http://localhost:5000/api/events');
+      const res = await axios.get('http://localhost:5001/api/events');
       setEvents(res.data);
     } catch (error) {
       console.error(error);
@@ -47,7 +47,7 @@ function TaskTracker() {
 
     // Fetch tasks for the selected event
     try {
-      const res = await axios.get(`http://localhost:5000/api/tasks/event/${eventId}`);
+      const res = await axios.get(`http://localhost:5001/api/tasks/event/${eventId}`);
       setTasks(res.data);
     } catch (error) {
       console.error(error);
@@ -56,7 +56,7 @@ function TaskTracker() {
 
   const handleStatusChange = async (taskId, status) => {
     try {
-      await axios.put(`http://localhost:5000/api/tasks/${taskId}/status`, { status });
+      await axios.put(`http://localhost:5001/api/tasks/${taskId}/status`, { status });
       // Optimistically update the task list by changing the task status
       setTasks(tasks.map(task => task._id === taskId ? { ...task, status } : task));
     } catch (error) {

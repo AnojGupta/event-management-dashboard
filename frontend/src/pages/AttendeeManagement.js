@@ -28,7 +28,7 @@ function AttendeeManagement() {
 
   const fetchAttendees = async () => {
     try {
-      const res = await axios.get('http://localhost:5000/api/attendees');
+      const res = await axios.get('http://localhost:5001/api/attendees');
       setAttendees(res.data);
     } catch (error) {
       console.error(error);
@@ -37,7 +37,7 @@ function AttendeeManagement() {
 
   const fetchEvents = async () => {
     try {
-      const res = await axios.get('http://localhost:5000/api/events');
+      const res = await axios.get('http://localhost:5001/api/events');
       setEvents(res.data);
     } catch (error) {
       console.error(error);
@@ -61,7 +61,7 @@ function AttendeeManagement() {
       return;
     }
     try {
-      await axios.post('http://localhost:5000/api/attendees', form);
+      await axios.post('http://localhost:5001/api/attendees', form);
       fetchAttendees();
       handleClose();
     } catch (error) {
@@ -73,7 +73,7 @@ function AttendeeManagement() {
   const handleDelete = async (id) => {
     if (window.confirm('Are you sure you want to delete this attendee?')) {
       try {
-        await axios.delete(`http://localhost:5000/api/attendees/${id}`);
+        await axios.delete(`http://localhost:5001/api/attendees/${id}`);
         fetchAttendees();
       } catch (error) {
         console.error(error);
@@ -88,7 +88,7 @@ function AttendeeManagement() {
       return;
     }
     try {
-      await axios.post(`http://localhost:5000/api/attendees/${assign.attendeeId}/assign/${assign.eventId}`);
+      await axios.post(`http://localhost:5001/api/attendees/${assign.attendeeId}/assign/${assign.eventId}`);
       alert('Attendee assigned to event successfully');
       setAssign({ attendeeId: '', eventId: '' });
     } catch (error) {

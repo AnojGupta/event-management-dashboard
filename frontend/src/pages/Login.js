@@ -26,7 +26,7 @@ function Login() {
       return;
     }
     try {
-      const res = await axios.post('http://localhost:5000/api/auth/login', form);
+      const res = await axios.post('http://localhost:5001/api/auth/login', form);
       const { token } = res.data;
       login(token); // Update auth context
       setSnackbar({ open: true, message: 'Login successful!', severity: 'success' });
